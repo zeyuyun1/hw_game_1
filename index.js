@@ -1,6 +1,15 @@
 // const backgroundColor = [230,220,190];
 const sounds = Array.from({ length: 4 });
 
+const ball1 = {
+    x: 300,
+    y: 300,
+    r: 100,
+    fillColor: [0,220,20],
+    strokeColor: [0, 220, 20]
+}
+
+
 function preload(){
 
     sounds.forEach((sound, i) => {
@@ -17,8 +26,11 @@ function setup(){
     background(230,220,190);
 }
 
+
 function draw(){
-    stroke(0,220,20);
-    fill(190, 80, 230);
-    ellipse(300, 300, 90);
+
+    stroke(ball1.strokeColor);
+    fill(ball1.fillColor)
+    ellipse(ball1.x, ball1.y, ball1.r);
+
 }
