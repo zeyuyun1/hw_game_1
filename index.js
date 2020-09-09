@@ -1,5 +1,5 @@
 // const backgroundColor = [230,220,190];
-const sounds = Array.from({ length: 4 });
+const sounds = Array.from({ length: 6 });
 
 const ball1 = {
     x: 300,
