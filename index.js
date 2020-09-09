@@ -27,10 +27,14 @@ function setup(){
 }
 
 
+
 function draw(){
 
-    stroke(ball1.strokeColor);
-    fill(ball1.fillColor)
-    ellipse(ball1.x, ball1.y, ball1.r);
+    drawCircle(ball1);
+}
 
+const drawCircle = ({x, y, r, strokeColor, fillColor}) => {
+        stroke(strokeColor);
+        fill(fillColor)
+        ellipse(x, y, r);
 }
