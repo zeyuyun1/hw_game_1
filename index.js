@@ -76,6 +76,15 @@ function preload(){
         sounds[i] = loadSound(`sounds/${i}.mp3`)
     })
 
+    console.log(sounds);
+
+    ball1.rightSound = sounds[0];
+    ball1.leftSound = sounds[1];
+    ball2.rightSound = sounds[2];
+    ball2.leftSound = sounds[3];
+    ball3.rightSound = sounds[4];
+    ball3.leftSound = sounds[5];
+
     // for(let i = 0; i < sounds.length; i++){
     //     sounds[i] = loadSound(`sounds/${i}.mp3`)
     // }
@@ -105,9 +114,11 @@ function updateBall(ball){
     console.log(ball.x);
     if(ball.x + ball.size/2 > rightEdge.x1 ){
         ball.speed *= -1;
+        ball.rightSound.play();
         activateLine(rightEdge);
     } else if(ball.x - ball.size/2 < leftEdge.x1 ){
         ball.speed *= -1;
+        ball.leftSound.play();
         activateLine(leftEdge);
     }
     ball.x+= ball.speed;
