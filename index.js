@@ -1,7 +1,10 @@
 // const backgroundColor = [230,220,190];
 const myCanvas = { width: 600, height: 600};
 const backgroundColor = [230,220,190];
-
+const lineColor = [0, 0, 0];
+const activeLineColor = [190, 20, 110];
+const lineWidth = 3;
+const activelineWidth = 9;
 const sounds = Array.from({ length: 6 });
 
 const ball1 = {
@@ -43,7 +46,29 @@ const ball3 = {
     soundLength: 500,
 } 
 
+const leftEdge = {
+    x1: 230,
+    y1: 0,
+    x2: 230,
+    y2: 600,
+    color: lineColor,
+    width: lineWidth,
+
+}
+
+const rightEdge = {
+    x1: 370,
+    y1: 0,
+    x2: 370,
+    y2: 600,
+    color: lineColor,
+    width: lineWidth,
+}
+
+
 const balls = [ball1, ball2, ball3];
+
+
 
 function preload(){
 
@@ -64,25 +89,33 @@ function setup(){
 
 
 function draw(){
+    
     background(backgroundColor);
 
     balls.forEach((ball) => {
-
-        move(ball);
-        drawCircle(ball);
-
+        moveBall(ball);
+        displayBall(ball);
     })
-
+    drawLine(leftEdge);
+    drawLine(rightEdge);
 }
 
 
-const move = (ball) => {
+const moveBall = (ball) => {
     ball.x += ball.speed;
 }
 
 
-const drawCircle = ({x, y, r, strokeColor, fillColor}) => {
+const displayBall = ({x, y, r, strokeColor, fillColor}) => {
         stroke(strokeColor);
         fill(fillColor)
         ellipse(x, y, r);
+}
+
+
+
+function drawLine({x1, y1, x2, y2, color, width}){
+    stroke(color);
+    strokeWeight(width);
+    line(x1, y1, x2, y2);
 }
