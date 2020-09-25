@@ -1,4 +1,7 @@
 // const backgroundColor = [230,220,190];
+const myCanvas = { width: 600, height: 600};
+const backgroundColor = [230,220,190];
+
 const sounds = Array.from({ length: 6 });
 
 const ball1 = {
@@ -40,7 +43,7 @@ const ball3 = {
     soundLength: 500,
 } 
 
-
+const balls = [ball1, ball2, ball3];
 
 function preload(){
 
@@ -54,16 +57,27 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(800, 800);
-    background(230,220,190);
+    createCanvas(myCanvas.width, myCanvas.height);
+    background(backgroundColor);
 }
 
 
 
 function draw(){
-    drawCircle(ball1);
-    drawCircle(ball2);
-    drawCircle(ball3);
+    background(backgroundColor);
+
+    balls.forEach((ball) => {
+
+        move(ball);
+        drawCircle(ball);
+
+    })
+
+}
+
+
+const move = (ball) => {
+    ball.x += ball.speed;
 }
 
 
